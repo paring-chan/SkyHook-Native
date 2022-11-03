@@ -62,4 +62,11 @@ pub extern "C" fn start_hook(callback: extern "C" fn(NativeEvent)) -> *const c_c
 }
 
 #[no_mangle]
-pub extern "C" fn stop_hook() {}
+pub extern "C" fn stop_hook() -> *const c_char {
+    if let Err(e) = skyhook::stop() {
+        let cstr = CString::new(e.message).unwrap();
+        return cstr.as_ptr();
+    }
+
+    null()
+}
