@@ -1,0 +1,3 @@
+[submodule "vendor/skyhook"]
+	path = vendor/skyhook
+	url = https://git.pikokr.dev/SkyHook/SkyHook
