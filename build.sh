@@ -8,7 +8,6 @@ mkdir -p out/i686
 # x86_64
 cargo build --release --target x86_64-unknown-linux-gnu
 # cargo build --release --target x86_64-apple-darwin
-echo [Windows]
 cargo build --release --target x86_64-pc-windows-gnu
 
 
