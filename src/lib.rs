@@ -30,7 +30,7 @@ fn send_callback(ev: NativeEvent) {
 }
 
 fn get_time(time: SystemTime) -> usize {
-    time.duration_since(UNIX_EPOCH).unwrap().as_millis() as usize
+    time.duration_since(UNIX_EPOCH).unwrap().as_nanos() as usize
 }
 
 #[no_mangle]
