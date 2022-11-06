@@ -1,51 +1,58 @@
 # SkyHook-Native
 
-dynamic library of SkyHook for use with other languages
+Dynamic library of SkyHook for use with other languages.
 
 ## Usage
 
-The following examples are all in C#
+The following examples are all in C#.
 
 ### Functions
 
-The exported functions are simple. Just `start_hook` and `stop_hook`
+The extern functions that you should run are simple.
 
-### start_hook
+There are just two; [`start_hook`](#starthook) and [`stop_hook`](#stophook).
+
+### `start_hook`
 
 ```cs
+// Here, we assign a callback along with starting a hook.
+// The NativeEvent type is declared below "Types" header.
 public static delegate void HookCallback(NativeEvent ev);
 
+// Here, we have an extern method to invoke.
 [DllImport("skyhook", EntryPoint = "start_hook")]
 public static extern void StartHook(HookCallback callback);
 ```
 
-### stop_hook
+### `stop_hook`
 
 ```cs
+// No additional information required to provide when stopping the hook.
 [DllImport("skyhook", EntryPoint = "stop_hook")]
 public static extern void StopHook();
 ```
 
 ### Types
 
-### NativeEventType
+### `NativeEventType`
 
 ```cs
 public enum NativeEventType {
-  KeyPressed,
-  KeyReleased
+    KeyPressed,
+    KeyReleased
 }
 ```
 
-### NativeEvent
+### `NativeEvent`
 
 ```cs
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeEvent
 {
-  public readonly ulong Time;
-  public readonly EventType Type;
-  public readonly uint Key;
+    public readonly ulong Time; // This is the key state update time.
+    public readonly NativeEventType Type; // Whether the key is up or down.
+    public readonly ushort Label; // Unified label for keys, such as ESC or F11.
+    public readonly ushort Key; // Actual key code from native level.
 }
 ```
 
@@ -55,4 +62,4 @@ public struct NativeEvent
 git clone https://git.pikokr.dev/SkyHook/SkyHook-Native #Clone
 ```
 
-to build, just run `build.sh` on Linux of MacOS, `build.ps1` on Windows
+To build, just run [`build.sh`](build.sh) on Linux of MacOS, [`build.ps1`](build.ps1) on Windows.
