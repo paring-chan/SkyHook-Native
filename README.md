@@ -13,7 +13,7 @@ The exported functions are simple. Just `start_hook` and `stop_hook`
 ### start_hook
 
 ```cs
-public static delegate void HookCallback(NativeEvent event);
+public static delegate void HookCallback(NativeEvent ev);
 
 [DllImport("skyhook", EntryPoint = "start_hook")]
 public static extern void StartHook(HookCallback callback);
