@@ -16,6 +16,7 @@ pub enum NativeEventType {
 pub struct NativeEvent {
     pub time: usize,
     pub event_type: NativeEventType,
+    pub label: u16,
     pub key: u16,
 }
 
@@ -41,14 +42,16 @@ pub extern "C" fn start_hook(callback: extern "C" fn(NativeEvent)) -> *const c_c
 
     if let Err(e) = skyhook::run(move |event| {
         let event = match event.data {
-            skyhook::types::EventData::KeyPress(key) => NativeEvent {
+            skyhook::types::EventData::KeyPress(label, key) => NativeEvent {
                 time: get_time(event.time),
                 event_type: NativeEventType::KeyPressed,
+                label: label as u16,
                 key,
             },
-            skyhook::types::EventData::KeyRelease(key) => NativeEvent {
+            skyhook::types::EventData::KeyRelease(label, key) => NativeEvent {
                 time: get_time(event.time),
                 event_type: NativeEventType::KeyReleased,
+                label: label as u16,
                 key,
             },
         };
