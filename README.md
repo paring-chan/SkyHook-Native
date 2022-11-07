@@ -10,7 +10,7 @@ The following examples are all in C#.
 
 The extern functions that you should run are simple.
 
-There are just two; [`start_hook`](#starthook) and [`stop_hook`](#stophook).
+There are just two; [`start_hook`](#start_hook) and [`stop_hook`](#stop_hook).
 
 ### `start_hook`
 
