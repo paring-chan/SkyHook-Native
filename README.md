@@ -62,4 +62,4 @@ public struct NativeEvent
 git clone https://git.pikokr.dev/SkyHook/SkyHook-Native #Clone
 ```
 
-To build, just run [`build.sh`](build.sh) on Linux of MacOS, [`build.ps1`](build.ps1) on Windows.
+To build, just run [`build.sh`](build.sh) on Linux or MacOS, [`build.ps1`](build.ps1) on Windows.
