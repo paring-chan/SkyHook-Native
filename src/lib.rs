@@ -1,9 +1,12 @@
 use std::{
     ffi::{c_char, CString},
     ptr::null,
-    time::{SystemTime, UNIX_EPOCH},
+    time::UNIX_EPOCH,
 };
 
+use chrono::NaiveDateTime;
+
+extern crate chrono;
 extern crate skyhook;
 
 #[repr(C)]
@@ -30,8 +33,8 @@ fn send_callback(ev: NativeEvent) {
     }
 }
 
-fn get_time(time: SystemTime) -> usize {
-    time.duration_since(UNIX_EPOCH).unwrap().as_nanos() as usize
+fn get_time(time: NaiveDateTime) -> usize {
+    time.timestamp_nanos() as usize
 }
 
 #[no_mangle]
