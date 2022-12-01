@@ -16,7 +16,7 @@ pub enum NativeEventType {
 
 #[repr(C)]
 pub struct NativeEvent {
-    pub time_sec: u64,
+    pub time_sec: i64,
     pub time_nsec: u32,
     pub event_type: NativeEventType,
     pub vkey: u16,
@@ -33,8 +33,9 @@ fn send_callback(ev: NativeEvent) {
     }
 }
 
-fn get_time(time: NaiveDateTime) -> usize {
     time.timestamp_nanos() as usize
+fn get_time(time: NaiveDateTime) -> (i64, u32) {
+    (time.timestamp(), time.timestamp_subsec_nanos())
 }
 
 #[no_mangle]
