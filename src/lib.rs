@@ -1,7 +1,6 @@
 use std::{
     ffi::{c_char, CString},
     ptr::null,
-    time::UNIX_EPOCH,
 };
 
 use chrono::NaiveDateTime;
