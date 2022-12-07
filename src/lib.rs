@@ -33,7 +33,6 @@ fn send_callback(ev: NativeEvent) {
     }
 }
 
-    time.timestamp_nanos() as usize
 fn get_time(time: NaiveDateTime) -> (i64, u32) {
     (time.timestamp(), time.timestamp_subsec_nanos())
 }
