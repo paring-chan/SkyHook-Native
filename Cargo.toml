@@ -9,4 +9,4 @@ skyhook = { path = "./vendor/skyhook/skyhook" }
 
 [lib]
 name = "skyhook"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
