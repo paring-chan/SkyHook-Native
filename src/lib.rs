@@ -80,3 +80,8 @@ pub extern "C" fn stop_hook() -> *const c_char {
 
     null()
 }
+
+#[no_mangle]
+pub extern "C" fn hook_is_running() -> bool {
+    skyhook::is_running()
+}
